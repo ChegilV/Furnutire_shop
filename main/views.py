@@ -6,12 +6,12 @@ from goods.models import *
 # Create your views here.
 def index(request):
 
-    categories = Categories.objects.all()
+   
 
     context = {
         'title':"Home - Main",
         'content': 'Furniture Shop',
-        'categories': categories,
+        
         }
     return render(request, 'main/index.html', context)
 

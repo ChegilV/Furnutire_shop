@@ -7,7 +7,7 @@ def catalog(request):
  
     context = {
         "title": "Home - catalog",
-
+        "goods": goods,
     }
     return render(request, "goods/catalog.html", context)
 
