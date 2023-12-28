@@ -21,6 +21,11 @@ def login(request):
             if user:
                 auth.login(request, user)
                 messages.success(request, f'{username},You have Successfuly logged in')
+
+                if request.POST.get('next', None):
+                    return HttpResponseRedirect(request.POST.get('next'))
+
+
                 return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserLoginForm()
