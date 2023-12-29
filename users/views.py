@@ -22,7 +22,8 @@ def login(request):
                 auth.login(request, user)
                 messages.success(request, f'{username},You have Successfuly logged in')
 
-                if request.POST.get('next', None):
+                redirect_page = request.POST.get('next', None)
+                if redirect_page and redirect_page != reverse('user:logout'):
                     return HttpResponseRedirect(request.POST.get('next'))
 
 
