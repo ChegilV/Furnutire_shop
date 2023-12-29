@@ -78,6 +78,10 @@ def profile(request):
     return render(request, 'user/profile.html', context)
 
 
+def users_cart(request):
+    return render(request, 'user/users_cart.html')
+
+
 @login_required
 def logout(request):
     messages.success(request, "You are logged out")
