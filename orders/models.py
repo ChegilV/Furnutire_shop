@@ -27,8 +27,8 @@ class Order(models.Model):
         verbose_name = 'Order'
         verbose_name_plural = 'Orders'
 
-    def __str__(self):
-        return f'Order № {self.pk} | Customer {self.user.first_name} {self.user.last_name}'
+        def __str__(self):
+            return f'Order № {self.pk} | Customer {self.user.first_name} {self.user.last_name}'
         
 
 
@@ -48,7 +48,7 @@ class OrderItem(models.Model):
     objects = OrderitemQueryset.as_manager()
 
     def products_price(self):
-        return round(self.price() * self.quantity, 2)
+        return round(self.product.sale_price() * self.quantity, 2)
 
     def __str__(self):
         return f'Product {self.name} | Order № {self.order.pk}' 
