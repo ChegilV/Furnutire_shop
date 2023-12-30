@@ -27,8 +27,8 @@ class Order(models.Model):
         verbose_name = 'Order'
         verbose_name_plural = 'Orders'
 
-        def __str__(self):
-            return f'Order № {self.pk} | Customer {self.user.first_name} {self.user.last_name}'
+    def __str__(self):
+        return f'Order № {self.pk} | Customer {self.user.first_name} {self.user.last_name}'
         
 
 
