@@ -1,8 +1,7 @@
+import re
 from django import forms
 
 class CreateOrderForm(forms.Form):
-
-
 
     first_name = forms.CharField()
     last_name = forms.CharField()
@@ -19,6 +18,18 @@ class CreateOrderForm(forms.Form):
             ],
         )
 
+    def clean_phone_number(self):
+        data = self.cleaned_data['phone_number']
+
+        if not data.isdigit():
+            raise forms.ValidationError("Only number")
+        
+        pattern = re.compile(r'^\d{10}$')
+
+        if not pattern.match(data):
+            raise forms.ValidationError("Wrong Format")
+        
+        return data
 
 
     # first_name = forms.CharField(
